@@ -1,0 +1,17 @@
+name: Setup GitHub Provider
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup GitHub Provider
+        uses: actions/github-provider@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ github.actor }}
+          repository: ${{ github.repository }}
